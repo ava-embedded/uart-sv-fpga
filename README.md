@@ -2,7 +2,7 @@
 
 A configurable UART (RX/TX) with 16x oversampling and FWFT FIFOs, written in SystemVerilog. Verified in simulation (ModelSim) and on hardware: a **Terasic DE2-115** board (Intel **Cyclone IV E, EP4CE115F29C7**) running a loopback echo at **9600 baud, 8N1**, tested from a PC terminal (Tera Term).
 
-![Tera Term echo test](docs/tera_term_echo.png)
+![Tera Term echo test](docs/UART_PC_Echo.png)
 
 > Demo video: `<add link here>`
 
@@ -118,29 +118,11 @@ The testbench transmits and receives at 9600 baud, 8N1. Remove `-c` to open the 
 | Simulation, 8N1 at 9600 baud | Done (ModelSim) |
 | Hardware loopback echo, 8N1 at 9600 baud | Done (DE2-115 + Tera Term) |
 | Other baud rates, data widths, stop-bit settings | Parameterized, not verified |
-| Self-checking testbench, assertions, coverage | Not implemented yet |
-
-## Limitations
-
-- Only **8N1 at 9600 baud** has been verified.
-- The receiver's shift uses a fixed `b_reg[7:1]` slice and a 3-bit bit counter, so `DBIT` works for 8 bits only. A fix is to size the counter with `$clog2(DBIT)` and shift with `{rx, b_reg[DBIT-1:1]}`.
-- The tick counter inside each frame is 4 bits wide, so `SB_TICK` above 16 does not fit.
-- No parity bit, framing-error or overrun flags. If the RX FIFO is full, incoming bytes are dropped silently.
-
-## Possible next steps
-
-- Self-checking testbench (compare transmitted vs. received bytes) with SystemVerilog assertions.
-- Parity and error flags (framing, overrun).
-- Fix the `DBIT` and `SB_TICK` limitations above and verify more baud rates.
 
 ## Tools
 
 SystemVerilog · ModelSim · Quartus Prime · Terasic DE2-115 (Cyclone IV E EP4CE115F29C7) · Tera Term · VS Code
 
-## License
-
-MIT License. See [LICENSE](LICENSE).
-
 ## Author
 
-Adrian Valle · Embedded Computer Systems Engineering, Universidad Politécnica de Yucatán · [LinkedIn](https://www.linkedin.com/in/adrianvalle-388920389)
+Adrian Valle · Embedded Computer Systems Engineering, Universidad Politécnica de Yucatán · [LinkedIn](www.linkedin.com/in/adrian-valle-388920389)
