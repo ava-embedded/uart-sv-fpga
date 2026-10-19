@@ -4,7 +4,7 @@ A configurable UART (RX/TX) with 16x oversampling and FWFT FIFOs, written in Sys
 
 ![Tera Term echo test](docs/UART_PC_Echo.png)
 
-> Demo video: `<add link here>`
+> Demo video: `https://1drv.ms/v/c/439CEB59CB91A3E9/IQBkM4dSCu7qTYZjQr3m3t-1AQf1gYx1_KCY4zAQMpMiG8g?e=bkU0Lk`
 
 ## Features
 
